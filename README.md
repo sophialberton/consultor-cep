@@ -37,19 +37,5 @@ O objetivo deste desafio é desenvolver um sistema web que permita consultar end
 
 Mais detalhes sobre a implementação e tecnologias utilizadas estão no README dentro da pasta `Desafio2/`.
 
-## Como Clonar e Rodar o Projeto
-
-```bash
-# Clone o repositório principal
-git clone --recurse-submodules https://github.com/seu-usuario/seu-repositorio.git
-
-# Acesse a pasta do repositório
-cd seu-repositorio
-```
-
-Para informações detalhadas de execução, consulte os READMEs individuais de cada desafio.
-
----
-
 Este repositório reflete minhas habilidades em resolução de problemas, algoritmos, estruturação de código e desenvolvimento web. Fico à disposição para discussão sobre as soluções implementadas! 🚀
 
