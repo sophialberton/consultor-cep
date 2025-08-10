@@ -1,2 +1,10 @@
+node_modules/
+# Ignorar node_modules dentro da pasta Desafio-2
 Desafio-2/node_modules/
-Desafio-2/dist/
+# Ignorar arquivos de log
+*.log  
+# Ignorar arquivos temporários do sistema
+*.tmp
+
+package-lock.json
+package.json
