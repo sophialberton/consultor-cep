@@ -27,7 +27,6 @@ app.get('/consulta/:cep', async (req, res) => {
     // O parâmetro :cep da URL é extraído de `req.params.cep`
     // O método `replace(/\D/g, '')` remove qualquer caractere não numérico (somente os números do CEP são necessários)
     const cep = req.params.cep.replace(/\D/g, '');
-
     try {
         // Realiza uma requisição para a API do ViaCEP para obter os dados do CEP
         const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
