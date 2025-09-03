@@ -285,3 +285,19 @@ body.dark-mode .ordenacao-controles select {
 .ordenacao-linha button {
     flex-grow: 0; /* GARANTE que os botões não estiquem */
 }
+
+/* --- ESTILO PARA A GRADE DE BOTÕES DE ORDENAÇÃO --- */
+.grid-ordenacao {
+    display: flex; /* Mantém o alinhamento do label e select */
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+    gap: 10px; /* Espaço entre label/select e a grade de botões */
+    align-items: center;
+}
+
+.botoes-ordenacao {
+    display: grid; /* Ativa o layout em grade */
+    grid-template-columns: 1fr 1fr; /* Cria duas colunas de largura igual */
+    gap: 15px; /* Adiciona um espaço de 15px entre os botões (vertical e horizontal) */
+    width: 100%; /* Faz a grade de botões ocupar todo o espaço disponível */
+    margin-top: 10px; /* Adiciona um espaço acima dos botões */
+}
