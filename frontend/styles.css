@@ -1,40 +1,119 @@
+/* Importando uma fonte mais moderna do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 /* Estilo geral do corpo da página */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif; /* Usando a nova fonte */
+    background: linear-gradient(to right, #ece9e6, #ffffff); /* Fundo com gradiente suave */
+    color: #333;
     margin: 0;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 /* Estilo para o contêiner principal da página */
 .container {
+    width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #c2c2c2;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px; /* Bordas mais arredondadas */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+    text-align: center; /* Centraliza o conteúdo dentro do container */
+}
+
+/* Estilo para o título principal */
+h1 {
+    font-size: 2.5em; /* Tamanho da fonte responsivo */
+    font-weight: 600;
+    color: #ae6ca3;
+    margin-bottom: 25px;
+}
+
+/* Estilo para os subtítulos */
+h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #555;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+/* Container para o formulário de busca */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre os itens */
+    margin-bottom: 25px;
 }
 
 /* Estilo para o campo de entrada (input) */
-input {
-    padding: 10px;
-    margin-right: 10px;
+input[type="text"] {
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 250px;
+    transition: border-color 0.3s;
 }
 
-/* Estilo para o botão */
+input[type="text"]:focus {
+    border-color: #ae6ca3;
+    outline: none;
+}
+
+/* Container para os botões e filtros */
+.controls-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas menores */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para os botões */
 button {
-    padding: 10px;
+    padding: 12px 20px;
     background-color: #ae6ca3;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 /* Estilo para o botão quando o mouse está sobre ele */
 button:hover {
-    background-color: #ae6ca3;
+    background-color: #9a5a8e; /* Cor um pouco mais escura */
+    transform: translateY(-2px); /* Efeito de elevação */
+}
+
+/* Estilo para o select de ordenação */
+#ordem {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    background-color: #f9f9f9;
+    font-size: 16px;
+}
+
+/* Estilo para a área de resultado da consulta */
+#resultado {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    border-left: 5px solid #ae6ca3;
+    text-align: left;
 }
 
 /* Estilo para a tabela */
@@ -42,110 +121,32 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 /* Estilo para as células de cabeçalho (th) e de dados (td) */
 th, td {
-    padding: 12px;
+    padding: 15px;
     text-align: left;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 /* Estilo para o cabeçalho da tabela */
-th {
-    background-color: #f4f4f4;
+thead th {
+    background-color: #ae6ca3;
+    color: white;
+    font-weight: 600;
 }
 
-/* Estilo para as células de dados da tabela */
-td {
-    background-color: #fff;
+/* Efeito de hover nas linhas da tabela */
+tbody tr:hover {
+    background-color: #f5f5f5;
 }
 
-/* Estilo para os botões de ordenação (se existirem) */
-button {
-    margin-top: 20px;
-}
-
-.assinatura {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 14px;
-    color: #555;
-}
-
-.assinatura strong {
-    color: #af4c9e;
-}
-
-/* Estilo para a mensagem de erro */
-.mensagem-erro {
-    color: red;
-    font-size: 14px;
-    margin-top: 15px;
-}
-
-/* Estilo para aumentar a fonte e centralizar o título */
-h1 {
-    font-size: 36px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.resultado-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
-}
-
-/* Estilo para a área de resultados */
-.resultado {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-/* Estilo para o label */
-label {
-    font-size: 16px;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-/* Estilo para o select */
-#ordem {
-    padding: 10px 15px;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    font-size: 16px;
-    transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
-}
-
-/* Efeito ao passar o mouse (hover) */
-#ordem:hover {
-    background-color: #e2e2e2;
-    border-color: #aaa;
-}
-
-/* Efeito ao focar no campo */
-#ordem:focus {
-    background-color: #fff;
-    border-color: #4a90e2;
-    outline: none;
-}
-
-/* Estilo das opções */
-#ordem option {
-    padding: 10px;
-}
-
-/* Estilo para a célula do estado */
+/* Estilo para a célula do estado com o ícone */
 td.estado {
     position: relative;
-    padding-right: 30px; /* Espaço para o ícone de lixeira */
+    padding-right: 40px;
 }
 
 /* Estilo para o ícone de lixeira */
@@ -153,15 +154,36 @@ td.estado {
     position: absolute;
     top: 50%;
     right: 10px;
-    transform: translateY(-50%); /* Para centralizar verticalmente */
-    width: 18px;
-    height: 18px;
-    background-image: url('https://img.icons8.com/ios-filled/50/000000/trash.png'); /* URL do ícone de lixeira */
-    background-size: cover;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('https://img.icons8.com/material-outlined/24/000000/trash.png');
+    background-size: contain;
+    background-repeat: no-repeat;
     cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
 }
 
-/* Opcional: mudar a aparência quando o ícone for hover */
 .lixeira:hover {
-    opacity: 0.7;
+    opacity: 1;
+}
+
+/* Mensagem de erro */
+.mensagem-erro {
+    color: #d9534f;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Assinatura */
+.assinatura {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #777;
+}
+
+.assinatura strong {
+    color: #ae6ca3;
 }
