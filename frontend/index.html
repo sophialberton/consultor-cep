@@ -14,23 +14,27 @@
             <button id="theme-switcher">Alternar para Modo Escuro</button>
         </div>
 
-        <input type="text" id="cep" placeholder="Digite o CEP" style="border-radius: 8px;" />
-        <button id="consultar-cep">Consultar</button>
+        <div class="consulta-grupo">
+            <input type="text" id="cep" placeholder="Digite o CEP" />
+            <button id="consultar-cep">Consultar</button>
+        </div>
 
         <div id="resultado"></div>
         
         <h2>Endereços Armazenados</h2>
 
-        <label for="ordem">Escolha a ordem:</label>
-        <select id="ordem">
-            <option value="asc">Crescente</option>
-            <option value="desc">Decrescente</option>
-        </select>
-          
-        <button id="ordenar-logradouro">Ordenar por Endereço</button>
-        <button id="ordenar-bairro">Ordenar por Bairro</button>
-        <button id="ordenar-localidade">Ordenar por Cidade</button>
-        <button id="ordenar-uf">Ordenar por Estado</button>
+        <div class="grid-ordenacao">
+            <label for="ordem">Escolha a ordem:</label>
+            <select id="ordem">
+                <option value="asc">Crescente</option>
+                <option value="desc">Decrescente</option>
+            </select>
+            <button id="ordenar-logradouro">Ordenar por Endereço</button>
+            <button id="ordenar-bairro">Ordenar por Bairro</button>
+
+            <button id="ordenar-localidade">Ordenar por Cidade</button>
+            <button id="ordenar-uf">Ordenar por Estado</button>
+        </div>
 
         <table id="tabela-enderecos">
             <thead>
@@ -45,7 +49,6 @@
         </table>
         <div class="assinatura">
             <p>Feito com ❤️ por <strong>Sophia Picasky Alberton</strong></p>
-            <div class="gif-transparente"></div>
         </div>        
     </div>
 

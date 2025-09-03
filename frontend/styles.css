@@ -1,229 +1,287 @@
-/* Importando uma fonte mais moderna do Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+/* Importação da fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;4_0;500;600;700&display=swap');
 
-/* --- VARIÁVEIS DE COR PARA OS TEMAS --- */
+/* --- 1. DEFINIÇÃO DAS VARIÁVEIS DE TEMA --- */
+
+/* TEMA CLARO (PADRÃO) */
 :root {
-    --bg-color: linear-gradient(to right, #ece9e6, #ffffff);
-    --container-bg: #ffffff;
-    --text-color: #333;
-    --h1-color: #ae6ca3;
-    --h2-color: #555;
-    --border-color: #ddd;
-    --input-bg: #ffffff;
-    --table-header-bg: #ae6ca3;
-    --table-row-hover: #f5f5f5;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --font-family-primary: 'Poppins', sans-serif;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    
+    /* Cores */
+    --cor-fundo: #f5f5f5;
+    --cor-container: #ffffff;
+    --cor-texto: #333333;
+    --cor-texto-suave: #666666;
+    --cor-primaria: #8e44ad;
+    --cor-primaria-hover: #9b59b6;
+    --cor-borda: #cccccc;
+    --cor-input-fundo: #ffffff;
+    --cor-tabela-cabecalho: #9b59b6;
+    --cor-tabela-linha-par: rgba(0, 0, 0, 0.03);
+    --cor-tabela-linha-hover: rgba(142, 68, 173, 0.08);
+    --cor-resultado-fundo: rgba(142, 68, 173, 0.08);
+    --cor-erro: #e74c3c;
+    --cor-lixeira: #e74c3c;
 }
 
+/* TEMA ESCURO (REDEFINIÇÃO DAS MESMAS VARIÁVEIS) */
 body.dark-mode {
-    --bg-color: #121212;
-    --container-bg: #1e1e1e;
-    --text-color: #f5f5f5;
-    --h1-color: #c586b9;
-    --h2-color: #ccc;
-    --border-color: #444;
-    --input-bg: #333;
-    --table-header-bg: #5c3b58;
-    --table-row-hover: #333;
-    --shadow-color: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+
+    /* Cores */
+    --cor-fundo: #1a1a1a;
+    --cor-container: #252525;
+    --cor-texto: #e0e0e0;
+    --cor-texto-suave: #bbbbbb;
+    --cor-primaria: #a879bd;
+    --cor-primaria-hover: #c29ed1;
+    --cor-borda: #444444;
+    --cor-input-fundo: #2a2a2a;
+    --cor-tabela-cabecalho: #6e4a81;
+    --cor-tabela-linha-par: #222222;
+    --cor-tabela-linha-hover: rgba(168, 121, 189, 0.1);
+    --cor-resultado-fundo: rgba(168, 121, 189, 0.15);
+    --cor-lixeira: #ff7675;
 }
 
-/* Estilo geral do corpo da página */
+
+/* --- 2. ESTILOS GERAIS USANDO AS VARIÁVEIS --- */
 body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg-color);
-    color: var(--text-color);
+    font-family: var(--font-family-primary);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
     margin: 0;
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
-    transition: background 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Container principal */
+/* Container Principal */
 .container {
+    background-color: var(--cor-container);
+    padding: 35px 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
     width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: var(--container-bg);
-    border-radius: 15px;
-    box-shadow: 0 10px 25px var(--shadow-color);
+    max-width: 700px;
+    box-sizing: border-box;
+    margin-top: 50px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+h1, h2 {
+    color: var(--cor-primaria);
     text-align: center;
-    transition: background-color 0.3s;
-}
-
-/* Título principal */
-h1 {
-    font-size: 2.5em;
-    font-weight: 600;
-    color: var(--h1-color);
     margin-bottom: 25px;
-}
-
-/* Estilo para o container do botão de tema */
-.theme-switcher-container {
-    margin-bottom: 25px;
-}
-
-#theme-switcher {
-    background: none;
-    border: 2px solid var(--h1-color);
-    color: var(--h1-color);
     font-weight: 600;
 }
 
-#theme-switcher:hover {
-    background: var(--h1-color);
-    color: var(--container-bg);
-}
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.6em; margin-top: 35px; }
 
-/* Subtítulos */
-h2 {
-    color: var(--h2-color);
-    border-bottom: 2px solid var(--border-color);
-    font-size: 1.8em;
-    font-weight: 600;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-}
-
-/* Campo de entrada (input) */
-input[type="text"] {
-    background-color: var(--input-bg);
-    color: var(--text-color);
-    border: 2px solid var(--border-color);
-    padding: 12px 15px;
-    font-size: 16px;
-    border-radius: 8px;
-    width: 250px;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus {
-    border-color: var(--h1-color);
+/* Formulário (Inputs, Selects, Botões) */
+input[type="text"], select {
+    padding: 5px 15px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--border-radius);
+    background-color: var(--cor-input-fundo);
+    color: var(--cor-texto);
+    font-size: 1em;
+    font-family: var(--font-family-primary);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
     outline: none;
 }
 
-/* Botões */
-button {
-    padding: 12px 20px;
-    background-color: var(--h1-color);
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background-color 0.3s, transform 0.2s;
+input[type="text"]:focus, select:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--cor-primaria) 20%, transparent);
 }
 
+/* --- AQUI VOCÊ MUDA TODOS OS BOTÕES --- */
+button {
+    padding: 5px 12px; /* Espaçamento interno (altura e largura) */
+    background-color: var(--cor-primaria); /* COR DE FUNDO */
+    color: white; /* COR DO TEXTO */
+    border: none; /* Borda (pode adicionar uma, ex: 2px solid #000) */
+    border-radius: var(--border-radius); /* Arredondamento dos cantos */
+    cursor: pointer;
+    font-size: 1em; /* Tamanho do texto */
+    font-weight: 600; /* Negrito do texto */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    outline: none;
+}
+
+/* Efeito ao passar o mouse por cima */
 button:hover {
-    background-color: #9a5a8e;
+    background-color: var(--cor-primaria-hover); /* COR DE FUNDO no hover */
     transform: translateY(-2px);
 }
 
-/* Select de ordenação */
-#ordem {
-    background-color: var(--input-bg);
-    color: var(--text-color);
-    border: 2px solid var(--border-color);
-    padding: 12px 15px;
-    border-radius: 8px;
-    font-size: 16px;
-}
-
-/* Área de resultado */
-#resultado {
-    border-left: 5px solid var(--h1-color);
-    background-color: rgba(0,0,0,0.1);
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: left;
-}
-
-/* Tabela */
-table {
-    box-shadow: 0 5px 15px var(--shadow-color);
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-}
-
-thead th {
-    background-color: var(--table-header-bg);
-    color: white;
+body.dark-mode button {
+    color: var(--cor-fundo); /* Texto mais escuro para melhor contraste com botões claros */
     font-weight: 600;
 }
 
-tbody tr {
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Alinhamento dos campos de consulta */
+/* --- NOVO: Grupo de Consulta CEP --- */
+.consulta-grupo {
+    display: flex; /* Ativa o Flexbox para alinhar os itens lado a lado */
+    gap: 10px; /* Cria um espaço de 10px entre o input e o botão */
+    margin-bottom: 20px; /* Mantém o espaço abaixo do grupo */
+}
+
+.consulta-grupo input[type="text"] {
+    flex-grow: 1; /* Faz o campo de texto ocupar todo o espaço disponível */
+    margin: 0; /* Remove margens desnecessárias */
+}
+
+.consulta-grupo button {
+    flex-shrink: 0; /* Impede que o botão encolha se não houver espaço */
+}
+
+/* Mensagens de Resultado */
+#resultado {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--cor-resultado-fundo);
+    border-left: 4px solid var(--cor-primaria);
+    border-radius: var(--border-radius);
+    min-height: 25px;
+    color: var(--cor-texto);
+    text-align: left;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+#resultado p { margin: 5px 0; }
+.mensagem-erro { color: var(--cor-erro); font-weight: 500; }
+
+/* Área de Ordenação */
+.ordenacao-controles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.ordenacao-controles label { font-weight: 500; }
+.ordenacao-controles select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238e44ad%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-6.5%200-12.3%203.2-15.7%208.1-3.4%204.9-3.7%2011.3-1%2016.5l139%20140.7a17.6%2017.6%200%200%200%2025.3%200l139-140.7c3.7-5.2%203.4-11.6-.9-16.5z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    cursor: pointer;
+    padding-right: 40px;
+}
+body.dark-mode .ordenacao-controles select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e0e0e0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-6.5%200-12.3%203.2-15.7%208.1-3.4%204.9-3.7%2011.3-1%2016.5l139%20140.7a17.6%2017.6%200%200%200%2025.3%200l139-140.7c3.7-5.2%203.4-11.6-.9-16.5z%22%2F%3E%3C%2Fsvg%3E');
+}
+.ordenacao-botoes button { flex: 1; min-width: 150px; }
+
+
+/* Tabela de Endereços */
+#tabela-enderecos {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+#tabela-enderecos th, #tabela-enderecos td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda);
     transition: background-color 0.3s;
 }
-
-tbody tr:hover {
-    background-color: var(--table-row-hover);
+#tabela-enderecos th {
+    background-color: var(--cor-tabela-cabecalho);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
 }
+#tabela-enderecos tbody tr:last-child td { border-bottom: none; }
+#tabela-enderecos tbody tr:nth-child(even) { background-color: var(--cor-tabela-linha-par); }
+#tabela-enderecos tbody tr:hover { background-color: var(--cor-tabela-linha-hover); }
 
-/* --- BLOCO CORRIGIDO --- */
-/* Estilo para a célula que contém uma ação (como a lixeira) */
-td.celula-acao {
-    position: relative;
-    padding-right: 40px; /* Garante espaço para o ícone */
+/* Célula de ação e Lixeira */
+.celula-acao { display: flex; justify-content: space-between; align-items: center; }
+.lixeira {
+    width: 20px;
+    height: 20px;
+    background-color: var(--cor-lixeira);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>') no-repeat center;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>') no-repeat center;
+    background-size: cover;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.lixeira:hover { opacity: 1; transform: scale(1.1); }
+
+/* Botão de Tema */
+.theme-switcher-container { text-align: right; margin-bottom: 25px; }
+#theme-switcher {
+    background-color: var(--cor-input-fundo);
+    color: var(--cor-texto-suave);
+    border: 1px solid var(--cor-borda);
+    padding: 8px 15px;
+    font-size: 0.9em;
+    font-weight: 400;
+    border-radius: 20px;
+}
+#theme-switcher:hover {
+    color: var(--cor-texto);
+    border-color: var(--cor-texto);
 }
 
 /* Assinatura */
-.assinatura {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 14px;
-    color: #777;
+.assinatura { text-align: center; margin-top: 40px; font-size: 0.9em; color: var(--cor-texto-suave); }
+.assinatura strong { color: var(--cor-primaria); font-weight: 600; }
+
+/* --- 3. RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    .container { padding: 25px 20px; margin-top: 20px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.4em; }
+    .container > input[type="text"] { width: 100%; margin: 0 0 15px 0; }
+    .container > #consultar-cep { width: 100%; }
+    .ordenacao-controles { flex-direction: column; align-items: stretch; }
 }
 
-body.dark-mode .assinatura {
-    color: #aaa;
+/* --- ESTILO CORRIGIDO PARA AS LINHAS DE ORDENAÇÃO --- */
+.ordenacao-linha {
+    display: flex;
+    gap: 15px; /* AUMENTADO: Mais espaço entre os itens */
+    align-items: center;
 }
 
-.assinatura strong {
-    color: var(--h1-color);
+/* Adiciona um espaço maior abaixo da primeira linha */
+.ordenacao-linha:first-of-type {
+    margin-bottom: 15px;
 }
 
-/* Lixeira e outros estilos */
-.lixeira {
-    opacity: 0.6;
-    transition: opacity 0.3s;
-    filter: invert(0);
-    position: absolute;
-    top: 50%;
-    right: 40px; /* Aumentamos o espaço da borda direita */
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background-image: url('https://img.icons8.com/material-outlined/24/000000/trash.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    cursor: pointer;
+/* Centraliza os botões na segunda linha para um visual mais limpo */
+.ordenacao-linha:last-of-type {
+    justify-content: center;
 }
 
-body.dark-mode .lixeira {
-    filter: invert(1); /* Inverte a cor do ícone para branco no modo escuro */
-}
-
-.lixeira:hover {
-    opacity: 1;
-}
-
-.mensagem-erro {
-    color: #d9534f;
-    font-weight: bold;
-    margin-top: 15px;
+/* A largura dos botões agora será definida pelo seu conteúdo e padding, sem distorção. */
+.ordenacao-linha button {
+    flex-grow: 0; /* GARANTE que os botões não estiquem */
 }
