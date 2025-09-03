@@ -60,11 +60,14 @@ function atualizarTabela() {
 
     listaEnderecos.forEach((endereco, index) => {
         const tr = document.createElement('tr');
+        
+        // --- CORREÇÃO APLICADA AQUI ---
+        // A classe "celula-acao" e o <span> da lixeira foram movidos para a última <td> (Estado/uf)
         tr.innerHTML = `
             <td>${endereco.logradouro}</td>
             <td>${endereco.bairro}</td>
             <td>${endereco.localidade}</td>
-            <td class="estado">
+            <td class="celula-acao">
                 ${endereco.uf}
                 <span class="lixeira" onclick="excluirEndereco(${index})"></span>
             </td>
@@ -100,4 +103,46 @@ function ordenarTabela(campo) {
 // Carrega os endereços do localStorage quando a página é carregada
 window.onload = function() {
     carregarDoLocalStorage();
+};
+
+// --- LÓGICA PARA ALTERNAR TEMA (MODO CLARO/ESCURO) ---
+
+// Seleciona o botão e o corpo da página
+const themeSwitcher = document.getElementById('theme-switcher');
+const body = document.body;
+
+// Função para aplicar o tema
+const applyTheme = (theme) => {
+    if (theme === 'dark') {
+        body.classList.add('dark-mode');
+        themeSwitcher.textContent = 'Alternar para Modo Claro';
+    } else {
+        body.classList.remove('dark-mode');
+        themeSwitcher.textContent = 'Alternar para Modo Escuro';
+    }
+};
+
+// Evento de clique no botão para alternar o tema
+themeSwitcher.addEventListener('click', () => {
+    // Verifica se o corpo JÁ TEM a classe 'dark-mode'
+    const isDarkMode = body.classList.contains('dark-mode');
+    
+    // Se estiver no modo escuro, muda para o claro. Senão, muda para o escuro.
+    if (isDarkMode) {
+        localStorage.setItem('theme', 'light');
+        applyTheme('light');
+    } else {
+        localStorage.setItem('theme', 'dark');
+        applyTheme('dark');
+    }
+});
+
+// Sobrescreve a função window.onload para incluir a verificação do tema
+window.onload = function() {
+    // 1. Carrega os endereços do localStorage
+    carregarDoLocalStorage();
+
+    // 2. Verifica e aplica o tema salvo
+    const savedTheme = localStorage.getItem('theme') || 'light'; // Padrão é 'light'
+    applyTheme(savedTheme);
 };

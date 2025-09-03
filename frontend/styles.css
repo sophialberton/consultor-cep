@@ -1,87 +1,117 @@
 /* Importando uma fonte mais moderna do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+/* --- VARIÁVEIS DE COR PARA OS TEMAS --- */
+:root {
+    --bg-color: linear-gradient(to right, #ece9e6, #ffffff);
+    --container-bg: #ffffff;
+    --text-color: #333;
+    --h1-color: #ae6ca3;
+    --h2-color: #555;
+    --border-color: #ddd;
+    --input-bg: #ffffff;
+    --table-header-bg: #ae6ca3;
+    --table-row-hover: #f5f5f5;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --container-bg: #1e1e1e;
+    --text-color: #f5f5f5;
+    --h1-color: #c586b9;
+    --h2-color: #ccc;
+    --border-color: #444;
+    --input-bg: #333;
+    --table-header-bg: #5c3b58;
+    --table-row-hover: #333;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
 /* Estilo geral do corpo da página */
 body {
-    font-family: 'Poppins', sans-serif; /* Usando a nova fonte */
-    background: linear-gradient(to right, #ece9e6, #ffffff); /* Fundo com gradiente suave */
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
     padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Estilo para o contêiner principal da página */
+/* Container principal */
 .container {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
     padding: 30px;
-    background-color: #ffffff;
-    border-radius: 15px; /* Bordas mais arredondadas */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
-    text-align: center; /* Centraliza o conteúdo dentro do container */
+    background-color: var(--container-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    text-align: center;
+    transition: background-color 0.3s;
 }
 
-/* Estilo para o título principal */
+/* Título principal */
 h1 {
-    font-size: 2.5em; /* Tamanho da fonte responsivo */
+    font-size: 2.5em;
     font-weight: 600;
-    color: #ae6ca3;
+    color: var(--h1-color);
     margin-bottom: 25px;
 }
 
-/* Estilo para os subtítulos */
+/* Estilo para o container do botão de tema */
+.theme-switcher-container {
+    margin-bottom: 25px;
+}
+
+#theme-switcher {
+    background: none;
+    border: 2px solid var(--h1-color);
+    color: var(--h1-color);
+    font-weight: 600;
+}
+
+#theme-switcher:hover {
+    background: var(--h1-color);
+    color: var(--container-bg);
+}
+
+/* Subtítulos */
 h2 {
+    color: var(--h2-color);
+    border-bottom: 2px solid var(--border-color);
     font-size: 1.8em;
     font-weight: 600;
-    color: #555;
     margin-top: 40px;
     margin-bottom: 20px;
-    border-bottom: 2px solid #f0f0f0;
     padding-bottom: 10px;
 }
 
-/* Container para o formulário de busca */
-.search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px; /* Espaçamento entre os itens */
-    margin-bottom: 25px;
-}
-
-/* Estilo para o campo de entrada (input) */
+/* Campo de entrada (input) */
 input[type="text"] {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
     padding: 12px 15px;
     font-size: 16px;
-    border: 2px solid #ddd;
     border-radius: 8px;
     width: 250px;
     transition: border-color 0.3s;
 }
 
 input[type="text"]:focus {
-    border-color: #ae6ca3;
+    border-color: var(--h1-color);
     outline: none;
 }
 
-/* Container para os botões e filtros */
-.controls-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas menores */
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-/* Estilo para os botões */
+/* Botões */
 button {
     padding: 12px 20px;
-    background-color: #ae6ca3;
+    background-color: var(--h1-color);
     color: white;
     border: none;
     cursor: pointer;
@@ -91,89 +121,64 @@ button {
     transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Estilo para o botão quando o mouse está sobre ele */
 button:hover {
-    background-color: #9a5a8e; /* Cor um pouco mais escura */
-    transform: translateY(-2px); /* Efeito de elevação */
+    background-color: #9a5a8e;
+    transform: translateY(-2px);
 }
 
-/* Estilo para o select de ordenação */
+/* Select de ordenação */
 #ordem {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
     padding: 12px 15px;
     border-radius: 8px;
-    border: 2px solid #ddd;
-    background-color: #f9f9f9;
     font-size: 16px;
 }
 
-/* Estilo para a área de resultado da consulta */
+/* Área de resultado */
 #resultado {
+    border-left: 5px solid var(--h1-color);
+    background-color: rgba(0,0,0,0.1);
     margin-top: 20px;
     padding: 15px;
-    background-color: #f7f7f7;
     border-radius: 8px;
-    border-left: 5px solid #ae6ca3;
     text-align: left;
 }
 
-/* Estilo para a tabela */
+/* Tabela */
 table {
+    box-shadow: 0 5px 15px var(--shadow-color);
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilo para as células de cabeçalho (th) e de dados (td) */
 th, td {
     padding: 15px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* Estilo para o cabeçalho da tabela */
 thead th {
-    background-color: #ae6ca3;
+    background-color: var(--table-header-bg);
     color: white;
     font-weight: 600;
 }
 
-/* Efeito de hover nas linhas da tabela */
+tbody tr {
+    transition: background-color 0.3s;
+}
+
 tbody tr:hover {
-    background-color: #f5f5f5;
+    background-color: var(--table-row-hover);
 }
 
-/* Estilo para a célula do estado com o ícone */
-td.estado {
+/* --- BLOCO CORRIGIDO --- */
+/* Estilo para a célula que contém uma ação (como a lixeira) */
+td.celula-acao {
     position: relative;
-    padding-right: 40px;
-}
-
-/* Estilo para o ícone de lixeira */
-.lixeira {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background-image: url('https://img.icons8.com/material-outlined/24/000000/trash.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.3s;
-}
-
-.lixeira:hover {
-    opacity: 1;
-}
-
-/* Mensagem de erro */
-.mensagem-erro {
-    color: #d9534f;
-    font-weight: bold;
-    margin-top: 15px;
+    padding-right: 40px; /* Garante espaço para o ícone */
 }
 
 /* Assinatura */
@@ -184,6 +189,41 @@ td.estado {
     color: #777;
 }
 
+body.dark-mode .assinatura {
+    color: #aaa;
+}
+
 .assinatura strong {
-    color: #ae6ca3;
+    color: var(--h1-color);
+}
+
+/* Lixeira e outros estilos */
+.lixeira {
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    filter: invert(0);
+    position: absolute;
+    top: 50%;
+    right: 40px; /* Aumentamos o espaço da borda direita */
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('https://img.icons8.com/material-outlined/24/000000/trash.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+body.dark-mode .lixeira {
+    filter: invert(1); /* Inverte a cor do ícone para branco no modo escuro */
+}
+
+.lixeira:hover {
+    opacity: 1;
+}
+
+.mensagem-erro {
+    color: #d9534f;
+    font-weight: bold;
+    margin-top: 15px;
 }
