@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Definindo a codificação de caracteres como UTF-8 para garantir que todos os caracteres especiais sejam renderizados corretamente -->
     <meta charset="UTF-8">
-    <!-- Meta tag para tornar a página responsiva em dispositivos móveis (ajusta o layout conforme o tamanho da tela) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Título da página que aparecerá na aba do navegador -->
     <title>Consulta de Endereço</title>
-    <!-- Link para o arquivo de estilo CSS, que está sendo servido pela pasta pública (root) -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Container principal que agrupa todos os elementos da página -->
     <div class="container">
-        <!-- Título principal da página -->
         <h1>Consulta de Endereço pelo CEP</h1>
 
-        <!-- Campo de entrada para o usuário digitar o CEP -->
-        <input type="text" id="cep" placeholder="Digite o CEP" style="border-radius: 8px;" />
-        
-        <!-- Botão para disparar a função de consulta do CEP -->
-        <button onclick="consultarCEP()">Consultar</button>
+        <div class="theme-switcher-container">
+            <button id="theme-switcher">Alternar para Modo Escuro</button>
+        </div>
 
-        <!-- Div onde serão exibidos os resultados da consulta (endereços encontrados) -->
+        <div class="consulta-grupo">
+            <input type="text" id="cep" placeholder="Digite o CEP" />
+            <button id="consultar-cep">Consultar</button>
+        </div>
+
         <div id="resultado"></div>
         
-        <!-- Título secundário para a seção de endereços armazenados -->
         <h2>Endereços Armazenados</h2>
 
-          
-          <label for="ordem">Escolha a ordem:</label>
-          <select id="ordem">
-              <option value="asc">Crescente</option>
-              <option value="desc">Decrescente</option>
-          </select>
-          
+        <div class="grid-ordenacao">
+            <label for="ordem">Escolha a ordem:</label>
+            <select id="ordem">
+                <option value="asc">Crescente</option>
+                <option value="desc">Decrescente</option>
+            </select>
+            <div class="botoes-ordenacao">
+                <button id="ordenar-logradouro">Ordenar por Endereço</button>
+                <button id="ordenar-bairro">Ordenar por Bairro</button>
+                <button id="ordenar-localidade">Ordenar por Cidade</button>
+                <button id="ordenar-uf">Ordenar por Estado</button>
+            </div>
+        </div>
 
-        <!-- Botões para o usuário ordenar a lista de endereços por cidade, bairro ou estado -->
-        <button onclick="ordenarTabela('logradouro')">Ordenar por Endereço</button>
-        <button onclick="ordenarTabela('bairro')">Ordenar por Bairro</button>
-        <button onclick="ordenarTabela('cidade')">Ordenar por Cidade</button>
-        <button onclick="ordenarTabela('estado')">Ordenar por Estado</button>
-
-        <!-- Tabela para exibir a lista de endereços armazenados -->
         <table id="tabela-enderecos">
-            <!-- Cabeçalho da tabela, com as colunas: Cidade, Bairro, Estado e Endereço -->
             <thead>
                 <tr>
                     <th>Endereço</th>
@@ -53,16 +46,13 @@
                     <th>Estado</th>
                 </tr>
             </thead>
-            <!-- Corpo da tabela onde as linhas (endereços) serão adicionadas dinamicamente -->
             <tbody id="lista-enderecos"></tbody>
         </table>
         <div class="assinatura">
-            <p>Feito com ❤️ por <strong>Sophia Picasky Alberton</strong></p>
-            <div class="gif-transparente"></div> <!-- GIF com fundo transparente -->
+            <p>Feito por <strong>Sophia Picasky Alberton</strong></p>
         </div>        
     </div>
 
-    <!-- Link para o arquivo JavaScript, que contém as funções responsáveis pela lógica da página -->
     <script src="app.js"></script>
 </body>
 </html>
